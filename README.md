@@ -16,9 +16,9 @@ Below a sample screenshot:
 
 ![alt text](MetabaseExportTool/images/gui.png "Metabase Export Tool GUI")
 
-To setup program and download dependecies, run:
+To setup program and download dependencies, run:
 ```shell script
-python setup.py install
+pip install .
 ```
 
 To start the program simply run:
@@ -27,3 +27,4 @@ python metabaseExportTool.py
 ```
 located in MetabaseExportTool folder.
 
+There is also a config file (config_db.yml) for source and target database parameters configuration, located in ui folder.
