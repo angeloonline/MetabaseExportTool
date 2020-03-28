@@ -27,3 +27,4 @@ python metabaseExportTool.py
 ```
 located in MetabaseExportTool folder.
 
+There is also a config file (config_db.yml) for source and target database parameters configuration, located in ui folder.
