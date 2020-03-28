@@ -1,0 +1,13 @@
+activeDb: postgresql
+source:
+    host: localhost
+    port: 5432
+    user: postgres
+    password: postgres
+    database: metabase
+target:
+    host: localhost
+    port: 5432
+    user: postgres
+    password: postgres
+    database: metabase_target
