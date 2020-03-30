@@ -1,4 +1,4 @@
-from MetabaseExportTool.model.MetabaseDatabaseModel import *
+from model.MetabaseDatabaseModel import *
 
 
 def getCollectionById(collection_id):

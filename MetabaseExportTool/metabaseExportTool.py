@@ -9,10 +9,10 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from playhouse.shortcuts import model_to_dict
 
-from MetabaseExportTool.model.MetabaseDatabaseModel import *
-from MetabaseExportTool.query.dbQueries import *
-from MetabaseExportTool.statement.insertStatements import *
-from MetabaseExportTool.ui.MetabaseExportMain import Ui_MainWindow
+from model.MetabaseDatabaseModel import *
+from query.dbQueries import *
+from statement.insertStatements import *
+from ui.MetabaseExportMain import Ui_MainWindow
 
 
 def getConfigDB():
@@ -95,8 +95,8 @@ def exportAll(cgfDB, collectionToExport, databaseToExport, schemaName, changeToS
 def exportAll(cfgDB, dbSource, collectionToExport, databaseToExport, changeToSchemaName, exportFolder):
     logMessages = []
     # Source Db
-    logging.info('Source Database ' + cfgDB['postgresql']['source']['database'])
-    sourceDatabase = cfgDB['postgresql']['source']
+    logging.info('Source Database ' + cfgDB['source']['database'])
+    sourceDatabase = cfgDB['source']
     database = PostgresqlDatabase(dbSource, user=sourceDatabase['user'], password=sourceDatabase['password'],
                                   host=sourceDatabase['host'], port=sourceDatabase['port'])
     Config(database)
@@ -195,7 +195,7 @@ def insertRecord(record):
 def deleteDb(cfgDB, dbTarget, collectionToDelete, databaseToDelete):
     logMessages = []
     # Destination DB
-    targetDatabase = cfgDB['postgresql']['target']
+    targetDatabase = cfgDB['target']
     database = PostgresqlDatabase(dbTarget, user=targetDatabase['user'], password=targetDatabase['password'],
                                   host=targetDatabase['host'], port=targetDatabase['port'])
     Config(database)
@@ -229,7 +229,7 @@ def migrateDB(cfgDB, dbSource, dbTarget, schemaName, changeToDatabaseId, changeT
               databaseToExport):
     # Configure our proxy to use the db we specified in config.
     # Source Db
-    sourceDatabase = cfgDB['postgresql']['source']
+    sourceDatabase = cfgDB['source']
     database = PostgresqlDatabase(dbSource, user=sourceDatabase['user'], password=sourceDatabase['password'],
                                   host=sourceDatabase['host'], port=sourceDatabase['port'])
     Config(database)
@@ -246,7 +246,7 @@ def migrateDB(cfgDB, dbSource, dbTarget, schemaName, changeToDatabaseId, changeT
     metricsRecords = getMetricsByDbId(databaseToExport).execute()
 
     # Destination DB
-    targetDatabase = cfgDB['postgresql']['target']
+    targetDatabase = cfgDB['target']
     database = PostgresqlDatabase(dbTarget, user=targetDatabase['user'], password=targetDatabase['password'],
                                   host=targetDatabase['host'], port=targetDatabase['port'])
     Config(database)
