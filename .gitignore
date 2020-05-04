@@ -2,3 +2,7 @@ MetabaseExportTool/dbConnection.py
 /venv/
 /MetabaseExportTool/old/
 /MetabaseExportTool/export/
+/build
+/dist
+.idea
+MetabaseExportTool.egg-info/

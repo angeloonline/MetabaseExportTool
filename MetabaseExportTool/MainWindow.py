@@ -445,7 +445,7 @@ class MetabaseWindow(QtWidgets.QMainWindow):
             self.printLog(e)
 
 
-def MainWindow():
+def runMetabaseExportToolGUI():
     # main()
     logging.basicConfig(format='[%(asctime)s-%(levelname)s] %(message)s', level=logging.DEBUG)
     app = QtWidgets.QApplication(sys.argv)
@@ -455,4 +455,4 @@ def MainWindow():
 
 
 if __name__ == '__main__':
-    MainWindow()
+    runMetabaseExportToolGUI()

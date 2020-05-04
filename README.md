@@ -23,8 +23,7 @@ pip install .
 
 To start the program simply run:
 ```shell script
-python metabaseExportTool.py
+python MetabaseExportTool.py
 ```
-located in MetabaseExportTool folder.
 
 There is also a config file (config_db.yml) for source and target database parameters configuration, located in ui folder.

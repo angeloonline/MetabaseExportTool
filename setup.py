@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from os import path
 
 here = path.abspath(path.dirname(__file__))
@@ -8,7 +8,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 
 setup(name='MetabaseExportTool',
-      version='0.1',
+      version='0.0.1',
       description='Metabase Export Tool',
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -19,8 +19,9 @@ setup(name='MetabaseExportTool',
       author_email='angeloonline@inwind.it',
       license='MIT',
       # What does your project relate to?
-      keywords='metabase esport database',
-      packages=['MetabaseExportTool'],
+      keywords='metabase export database',
+      packages=find_packages(),
+      package_data={'': ['config_db.yml']},
       # List run-time dependencies here.  These will be installed by pip when
       # your project is installed.
       install_requires=[
@@ -28,4 +29,8 @@ setup(name='MetabaseExportTool',
       ],
       # List required Python versions
       python_requires='>=3.6',
-      zip_safe=False)
+      zip_safe=False,
+      entry_points={'console_scripts':
+                          ['metabase-export = MetabaseExportTool.MainWindow:runMetabaseExportToolGUI']
+                    }
+      )
