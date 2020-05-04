@@ -9,14 +9,13 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from playhouse.shortcuts import model_to_dict
 
-from model.MetabaseDatabaseModel import *
-from query.dbQueries import *
-from statement.insertStatements import *
-from ui.MetabaseExportMain import Ui_MainWindow
+from MetabaseExportTool.query.dbQueries import *
+from MetabaseExportTool.statement.insertStatements import *
+from MetabaseExportTool.ui.MetabaseExportMain import Ui_MainWindow
 
 
 def getConfigDB():
-    with open(os.path.abspath("config_db.yml"), 'r') as ymlfile:
+    with open(os.path.abspath("MetabaseExportTool/config_db.yml"), 'r') as ymlfile:
         cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 
     return cfg
@@ -446,10 +445,14 @@ class MetabaseWindow(QtWidgets.QMainWindow):
             self.printLog(e)
 
 
-if __name__ == '__main__':
+def MainWindow():
     # main()
     logging.basicConfig(format='[%(asctime)s-%(levelname)s] %(message)s', level=logging.DEBUG)
     app = QtWidgets.QApplication(sys.argv)
     w = MetabaseWindow()
     w.show()
     sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    MainWindow()
