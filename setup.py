@@ -21,16 +21,18 @@ setup(name='MetabaseExportTool',
       # What does your project relate to?
       keywords='metabase export database',
       packages=find_packages(),
-      package_data={'': ['config_db.yml']},
+      package_data={'MetabaseExportTool': ['config_db.yml']},
+      include_package_data=True,
       # List run-time dependencies here.  These will be installed by pip when
       # your project is installed.
       install_requires=[
+          'importlib_resources;python_version<"3.7"',
           'peewee', 'PyQt5', 'PyYAML'
       ],
       # List required Python versions
       python_requires='>=3.6',
       zip_safe=False,
-      entry_points={'console_scripts':
-                          ['metabase-export = MetabaseExportTool.MainWindow:runMetabaseExportToolGUI']
+      entry_points={
+          'console_scripts':['metabase-export = MetabaseExportTool.MainWindow:runMetabaseExportToolGUI']
                     }
       )

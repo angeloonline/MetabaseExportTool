@@ -25,5 +25,6 @@ To start the program simply run:
 ```shell script
 python MetabaseExportTool.py
 ```
+It also install an executable script (.exe for Windows) in: ```YOUR_INSTALL_PATH\Scripts\metabase-exporter.exe``` 
 
 There is also a config file (config_db.yml) for source and target database parameters configuration, located in ui folder.
