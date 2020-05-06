@@ -5,6 +5,12 @@ import sys
 import os
 import yaml
 
+try:
+    import importlib.resources  as pkg_resources
+except ImportError:
+    # Try backported to PY<37 `importlib_resources`.
+    import importlib_resources as pkg_resources
+
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from playhouse.shortcuts import model_to_dict
@@ -15,9 +21,9 @@ from MetabaseExportTool.ui.MetabaseExportMain import Ui_MainWindow
 
 
 def getConfigDB():
-    with open(os.path.abspath("MetabaseExportTool/config_db.yml"), 'r') as ymlfile:
+    with pkg_resources.open_binary('MetabaseExportTool', 'config_db.yml') as ymlfile:
+    #with open(os.path.abspath("MetabaseExportTool/config_db.yml"), 'r') as ymlfile:
         cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
-
     return cfg
 
 
