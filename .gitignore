@@ -1,18 +1,8 @@
-# Project specific
 MetabaseExportTool/dbConnection.py
-MetabaseExportTool/export/
-MetabaseExportTool.egg-info/
-
-# virtualenv
-venv/
-ENV/
-
-# Distribution / packaging
-build/
-dist/
+/venv/
+/MetabaseExportTool/old/
+/MetabaseExportTool/export/
+/build
+/dist
 .idea
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+MetabaseExportTool.egg-info/
