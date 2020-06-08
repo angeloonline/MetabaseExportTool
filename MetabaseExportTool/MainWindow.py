@@ -343,7 +343,7 @@ def main():
         exportAll(collectionToExport, databaseToExport, schemaName, changeToSchemaName, exportFolder)
         '''
 
-    # fields = deleteFieldsByDbId(databaseToExport, "ANGELO_THED")
+
     except Exception as e:
         print(str(e))  # print exceptions
 
