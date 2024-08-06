@@ -127,6 +127,7 @@ def exportAll(cfgDB, dbSource, collectionToExport, databaseToExport, changeToSch
                 file.write(table)
                 file.write("\n")
 
+        logging.info('exporting Report Card')
         arrayOfReportCards = createArrayOfReportCards(reportCards)
         with open(exportFolder + 'export_report_card.sql', 'w', encoding="utf-8") as file:
             for table in arrayOfReportCards:

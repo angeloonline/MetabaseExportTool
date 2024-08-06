@@ -27,7 +27,7 @@ setup(name='MetabaseExportTool',
       # your project is installed.
       install_requires=[
           'importlib_resources;python_version<"3.7"',
-          'peewee', 'PyQt5', 'PyYAML'
+          'peewee', 'PyQt5', 'PyYAML', 'PyMySQL'
       ],
       # List required Python versions
       python_requires='>=3.6',

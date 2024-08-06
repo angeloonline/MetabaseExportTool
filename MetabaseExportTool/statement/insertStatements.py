@@ -4,12 +4,12 @@ def createCollection(tables):
     array = []
     for table in tables:
         # print(table.name, " ", table.schema)
-        insert_into = "INSERT INTO public.%s VALUES (%d, %s, %s, %s, %s, %s, %s, %s);" % (
+        insert_into = "INSERT INTO public.%s VALUES (%d, %s, %s, %s, %s, %s, %s);" % (
                           "collection",
                           table.id,
                           printNullOrStringIfNone(table.name),
                           printNullOrStringIfNone(table.description),
-                          printNullOrStringIfNone(table.color),
+                          #printNullOrStringIfNone(table.color),
                           printBoolean(table.archived),
                           printNullOrStringIfNone(table.location),
                           printNullIfNone(table.personal_owner_id),
@@ -62,7 +62,7 @@ def createArrayOfReportCards(tables):
     for table in tables:
         # print(table.name, " ", table.schema)
         insert_into = "INSERT INTO public.%s VALUES (%d, %s, %s, %s, %s, %s, %s, %s," \
-                      "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);" % (
+                      "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);" % (
             "report_card",
             table.id,
             printNullOrStringIfNoneDatetime(table.created_at),
@@ -84,7 +84,7 @@ def createArrayOfReportCards(tables):
             printNullOrStringIfNone(table.embedding_params),
             printNullIfNone(table.cache_ttl),
             printNullOrStringIfNone(table.result_metadata),
-            printNullOrStringIfNone(table.read_permissions),
+            #printNullOrStringIfNone(table.read_permissions),
             printNullIfNone(table.collection_position) #21
 
         )
@@ -127,7 +127,7 @@ def createArrayOfDatabases(tables):
     array = []
     for table in tables:
         # print(table.name, " ", table.schema)
-        insert_into = "INSERT INTO public.%s VALUES (%d, '%s', '%s', '%s', %s, %s, '%s', %s, %s, %s, %s, " \
+        insert_into = "INSERT INTO public.%s VALUES (%d, '%s', '%s', '%s', %s, '%s', %s, %s, %s, %s, " \
                       "%s, %s, %s, %s, %s, %s);" % (
                           "metabase_database",
                           table.id,
@@ -135,7 +135,7 @@ def createArrayOfDatabases(tables):
                           table.updated_at,
                           table.name,
                           printNullIfNone(table.description),
-                          str("'" + printNullIfNone(table.details) + "'"),
+                          printNullIfNone(table.details),
                           printNullIfNone(table.engine),
                           str(table.is_sample).lower(),
                           str(table.is_full_sync).lower(),
@@ -145,7 +145,7 @@ def createArrayOfDatabases(tables):
                           str("'" + table.cache_field_values_schedule + "'"),
                           str("'" + table.timezone+ "'"),
                           printBoolean(table.is_on_demand),
-                          printNullIfNone(table.options),
+                          #printNullIfNone(table.options),
                           printBoolean(table.auto_run_queries) #16
         )
 
@@ -159,16 +159,16 @@ def createArrayOfTables(tables, schemaNameToChange, offsetIncrement=0):
     array =[]
     for table in tables:
         # print(table.name, " ", table.schema)
-        insert_into = "INSERT INTO public.%s VALUES (%d, '%s', '%s', '%s', %s, %s, %s, '%s', %s, %d, " \
-                      "'%s', %s, '%s', %s, %s, %s, '%s');" % (
+        insert_into = "INSERT INTO public.%s VALUES (%d, '%s', '%s', %s, %s, '%s', %s, %d, " \
+                      "'%s', %s, '%s', %s, %s, %s);" % (
                           "metabase_table",
                           table.id,
                           table.created_at,
                           table.updated_at,
                           table.name,
-                          'NULL' if table.rows is None else table.rows,
+                          #'NULL' if table.rows is None else table.rows,
                           'NULL' if table.description is None else "'" + table.description + "'",
-                          'NULL' if table.entity_name is None else "'" + table.entity_name + "'",
+                          #'NULL' if table.entity_name is None else "'" + table.entity_name + "'",
                           table.entity_type,
                           str(table.active).lower(),
                           table.db_id,
@@ -177,8 +177,8 @@ def createArrayOfTables(tables, schemaNameToChange, offsetIncrement=0):
                           schemaNameToChange if schemaNameToChange is not None else table.schema,
                           'NULL' if table.points_of_interest is None else "'" + table.points_of_interest + "'",
                           'NULL' if table.caveats is None else "'" + table.caveats + "'",
-                          str(table.show_in_getting_started).lower(),
-                          table.fields_hash
+                          str(table.show_in_getting_started).lower()
+                          #table.fields_hash
                       )
 
         print(insert_into)
@@ -191,15 +191,15 @@ def createArrayOfFields(tables):
     array =[]
     for table in tables:
         # print(table.name, " ", table.schema)
-        insert_into = "INSERT INTO public.%s VALUES (%d, '%s', '%s', '%s', %s, %s, %s, %s, %s, %s, %s, %s, " \
-                      "'%s', '%s', %s, %s, %s, %s, %s, %d, %s, %s, %s);" % (
+        insert_into = "INSERT INTO public.%s VALUES (%d, '%s', '%s', '%s', '%s', %s, %s, %s, %s, %s, %s, %s, " \
+                      "'%s', '%s', %s, %s, %s, %s, %d, %s, %s, %s);" % (
                           "metabase_field",
                           table.id, #1
                           table.created_at,
                           table.updated_at,
                           table.name,
                           printNullOrStringIfNone(table.base_type),
-                          printNullOrStringIfNone(table.special_type),
+                          #printNullOrStringIfNone(table.special_type),
                           str(table.active).lower(),
                           printNullIfNone(table.description),
                           str(table.preview_display).lower(),
