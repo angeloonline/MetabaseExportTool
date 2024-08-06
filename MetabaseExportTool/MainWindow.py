@@ -98,11 +98,17 @@ def exportAll(cgfDB, collectionToExport, databaseToExport, schemaName, changeToS
 
 
 def exportAll(cfgDB, dbSource, collectionToExport, databaseToExport, changeToSchemaName, exportFolder):
+    database = None
     logMessages = []
     # Source Db
     logging.info('Source Database ' + cfgDB['source']['database'])
     sourceDatabase = cfgDB['source']
-    database = PostgresqlDatabase(dbSource, user=sourceDatabase['user'], password=sourceDatabase['password'],
+    activeDb = cfgDB['activeDb']
+    if activeDb == 'postgresql':
+        database = PostgresqlDatabase(dbSource, user=sourceDatabase['user'], password=sourceDatabase['password'],
+                                  host=sourceDatabase['host'], port=sourceDatabase['port'])
+    elif activeDb == 'mariadb':
+        database = MySQLDatabase(dbSource, user=sourceDatabase['user'], password=sourceDatabase['password'],
                                   host=sourceDatabase['host'], port=sourceDatabase['port'])
     Config(database)
 
